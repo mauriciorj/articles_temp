@@ -1,0 +1,76 @@
+{
+  "name": "wcl_articles",
+  "version": "1.0.11",
+  "description": "articles Storybook design system",
+  "license": "MIT",
+  "repository": "https://github.com/mauriciorj/articles.git",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "next": "^10.0.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "storybook-addon-next-router": "^2.0.3",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "build": "npm run clean && cross-env BABEL_ENV=production babel src -d dist && npm run postBuild && npm run copyCSS",
+    "postBuild": "cp -R src/components/assets/* dist/components/assets",
+    "copyCSS": "copyfiles -u 2 ./src/components/**/*.css ./dist/components/",
+    "clean": "rm -rf dist && mkdir dist && cd dist && mkdir components && cd components && mkdir assets"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^4.3.0",
+    "@babel/cli": "^7.12.8",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+    "@storybook/addon-actions": "^6.1.9",
+    "@storybook/addon-essentials": "^6.1.9",
+    "@storybook/addon-links": "^6.1.9",
+    "@storybook/node-logger": "^6.1.9",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.9",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "storybook-react-router": "^1.0.8",
+    "styled-components": "^5.2.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
+    ]
+  }
+}
